@@ -1,28 +1,31 @@
 package com.skilldistillery.blackjack.hand;
 
+import com.skilldistillery.blackjack.cards.Card;
+
 public class BlackjackHand extends Hand {
-	
-	 public BlackjackHand() {
+
+	public BlackjackHand() {
 		super();
 	}
 
 	@Override
 	public int getHandValue() {
-		
-		return 0;
+		int playerValue = 0;
+
+		for (Card card : getCards()) {
+			playerValue += card.getValue();
+
+		}
+		return playerValue;
 	}
-	
+
 	public boolean isBlackjack() {
-		
-		
-		return false;
+		return getHandValue() == 21;
+
 	}
-	
+
 	public boolean isBust() {
-		
-		return false;
+		return getHandValue() > 21;
 	}
-	
-	
 
 }
